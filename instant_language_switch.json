@@ -1,0 +1,51 @@
+{
+    "description": "Instantly switch input source English <-> Russian (control + spacebar)",
+    "manipulators": [
+        {
+            "conditions": [
+                {
+                    "name": "input_source",
+                    "type": "variable_if",
+                    "value": 0
+                }
+            ],
+            "from": {
+                "key_code": "spacebar",
+                "modifiers": { "mandatory": ["control"] }
+            },
+            "to": [
+                { "select_input_source": { "language": "^en$" } },
+                {
+                    "set_variable": {
+                        "name": "input_source",
+                        "value": 1
+                    }
+                }
+            ],
+            "type": "basic"
+        },
+        {
+            "conditions": [
+                {
+                    "name": "input_source",
+                    "type": "variable_if",
+                    "value": 1
+                }
+            ],
+            "from": {
+                "key_code": "spacebar",
+                "modifiers": { "mandatory": ["control"] }
+            },
+            "to": [
+                { "select_input_source": { "language": "^ru$" } },
+                {
+                    "set_variable": {
+                        "name": "input_source",
+                        "value": 0
+                    }
+                }
+            ],
+            "type": "basic"
+        }
+    ]
+}
